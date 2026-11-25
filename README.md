@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Simple CRM
 
 Небольшой учебный CRM-проект для изучения **Docker, Docker Compose и основ контейнеризации приложений**.
@@ -70,3 +71,7 @@ simple-crm/
 │   ├── Dockerfile
 │   └── init.sql
 │
+=======
+# CRM
+Lerning nginx, docker/docker-compose
+>>>>>>> a6fe79d86bbe560dfcf25d73688bf0d2e6e97212

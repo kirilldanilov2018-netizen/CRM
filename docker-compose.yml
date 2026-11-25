@@ -1,0 +1,39 @@
+services:
+db:
+  image: simpe-crm-db
+  container_name: db-container
+  environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
+  volumes:
+    - postgres_data:/var/lib/postgresql/data
+  healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER} -d ${DB_NAME}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+  restart: unless-stopped
+frontend:
+   image: simple-crm-frontend
+   container_name: frontend-container
+ports:
+    - "8080:80"
+depends_on:
+    - backend:
+restart: unless-stopped
+backend:
+  image: simple-crm-backend
+  container_name: backend-container
+  environment:
+    DB_HOST: db
+    DB_PORT: 5432
+    DB_USER: ${DB_USER}
+    DB_PASSWORD: ${DB_PASSWORD}
+    DB_NAME: ${DB_NAME}
+  depends_on:
+    - db:
+        condition: service_healthy
+        restart: unless-stopped
+volumes:
+  postgres_data:

@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple CRM</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="container">
+    <header>
+      <div>
+        <p class="eyebrow">CUSTOMER MANAGEMENT</p>
+        <h1>Мои контакты</h1>
+        <p class="subtitle">Небольшая CRM для хранения клиентов</p>
+      </div>
+      <div class="counter"><strong id="count">0</strong><span>контактов</span></div>
+    </header>
+
+    <section class="panel">
+      <h2>Добавить контакт</h2>
+      <form id="contact-form">
+        <label>Имя<input name="name" placeholder="Например, Иван Петров" required></label>
+        <label>Email<input name="email" type="email" placeholder="ivan@example.com"></label>
+        <label>Компания<input name="company" placeholder="Название компании"></label>
+        <button type="submit">Добавить контакт</button>
+      </form>
+      <p id="message" role="status"></p>
+    </section>
+
+    <section class="contacts-section">
+      <div class="section-heading"><h2>Список клиентов</h2><button id="refresh" class="secondary">Обновить</button></div>
+      <div id="contacts" class="contacts"><p class="empty">Загружаем контакты…</p></div>
+    </section>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
